@@ -27,6 +27,37 @@
   <a href="contato.html">Contato</a>
   <a href="snake.html">🐍 Jogo da Cobrinha</a>
 </nav>
+<div id="avatar">👟👟</div>
+
+<script>
+  const avatar = document.getElementById("avatar");
+  let pos = 0;
+  let direction = 1; // 1 = direita, -1 = esquerda
+
+  function mover() {
+    const largura = window.innerWidth - 60; // limite da tela
+    pos += direction * 5; // velocidade (5px por vez)
+
+    if (pos >= largura || pos <= 0) {
+      direction *= -1; // muda a direção ao bater na borda
+      avatar.style.transform = direction === 1 ? "scaleX(1)" : "scaleX(-1)"; // vira para o lado
+    }
+
+    avatar.style.left = pos + "px";
+  }
+
+  setInterval(mover, 50); // 50ms → 20 fps
+</script>
+
+<style>
+  #avatar {
+    position: fixed;
+    bottom: 20px;  /* fica perto do rodapé */
+    left: 0;
+    font-size: 40px; /* tamanho do avatar */
+    transition: transform 0.2s;
+  }
+</style>
 
 
   <footer>
